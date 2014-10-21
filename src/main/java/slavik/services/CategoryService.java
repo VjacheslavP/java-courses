@@ -10,7 +10,6 @@ import java.util.List;
 @Service
 public class CategoryService {
     private Category[] categories;
-    private ProductService productService;
 
     public CategoryService() {
         Category[] categories = new Category[5];
@@ -21,7 +20,6 @@ public class CategoryService {
         categories[4] = new Category("watch", 4);
         this.categories = categories;
     }
-
 
     public Category getCategoryById(int id) {
         return id > 0 && id < categories.length ? categories[0] : null;
@@ -39,16 +37,6 @@ public class CategoryService {
             new Product("Garry Potter", 0, 8),
     };
 
-    public Product[] getProductsByCategory(int cid) {
-        List<Product> result = new ArrayList<Product>();
-        for (Product product : products) {
-            if (product.getCategory() == cid)
-                result.add(product);
-        }
-        Product[] result_array = new Product[result.size()];
-        result.toArray(result_array);
-        return result_array;
-    }
     public Category[] getAllCategories() {
         return this.categories;
     }

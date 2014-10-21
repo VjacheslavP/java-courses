@@ -28,6 +28,6 @@ public class ProductService {
         }
         Product[] result_array = new Product[result.size()];
         result.toArray(result_array);
-        return products;
+        return result_array;
     }
 }
