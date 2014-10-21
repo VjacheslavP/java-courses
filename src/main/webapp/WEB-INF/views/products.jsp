@@ -7,7 +7,7 @@
     <title></title>
 </head>
 <body>
-Products list:
+<h1>Products list:</h1>
     <ul>
         <c:forEach var="product" items="${products}">
             <li>

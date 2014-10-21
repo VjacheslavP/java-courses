@@ -30,4 +30,12 @@ public class ProductService {
         result.toArray(result_array);
         return result_array;
     }
+
+	public Product getProductById(int id) {
+		for (Product product : products) {
+			if (product.getId() == id)
+				return product;
+		}
+		return null;
+	}
 }
