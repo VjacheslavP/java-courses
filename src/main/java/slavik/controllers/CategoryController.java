@@ -1,21 +1,26 @@
 package slavik.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import slavik.domain.Category;
 import slavik.domain.Product;
+import slavik.domain.User;
 import slavik.services.CategoryService;
 import slavik.services.ProductService;
 
 @Controller
+@Scope("session")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private User user;
 
     @RequestMapping("/category/{id}")
     public String getCategoryInfo(Model model, @PathVariable int id) {
@@ -27,6 +32,7 @@ public class CategoryController {
             return "unknown";
         }
         model.addAttribute("category", category);
+	    model.addAttribute("user", user.getName());
         return "category";
     }
 

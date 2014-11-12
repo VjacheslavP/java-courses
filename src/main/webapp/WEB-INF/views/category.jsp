@@ -7,6 +7,7 @@
     <title></title>
 </head>
 <body>
+<c:out value="${user}"></c:out>
 <ul>
     <li></li>
 </ul>
