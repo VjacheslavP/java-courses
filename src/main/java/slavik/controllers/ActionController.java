@@ -22,7 +22,7 @@ public class ActionController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
+//	@Autowired
 	private User user;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
