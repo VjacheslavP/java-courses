@@ -7,8 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import slavik.domain.User;
 import slavik.services.UserService;
+import slavik.session.UserInterface;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,14 +22,14 @@ public class ActionController {
 	@Autowired
 	private UserService userService;
 
-//	@Autowired
-	private User user;
+	@Autowired
+	private UserInterface currentUser;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String signIn(Model model, @RequestParam String username, @RequestParam String password, HttpSession session) {
 		if (username.equals("test") && password.equals("test")) {
 			if (userService.checkUserPassword(username, password))
-				user = userService.getUserByUsername(username);
+				currentUser.setName(username);
 		 	return "redirect:/";
 		} else {
 			model.addAttribute("message", "Incorrect login or password, try again!");

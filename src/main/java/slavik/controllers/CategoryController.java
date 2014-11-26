@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import slavik.domain.Category;
 import slavik.domain.Product;
-import slavik.domain.User;
 import slavik.services.CategoryService;
 import slavik.services.ProductService;
+import slavik.session.UserInterface;
 
 @Controller
 @Scope("session")
@@ -20,7 +20,7 @@ public class CategoryController {
 	@Autowired
 	private ProductService productService;
 	@Autowired
-	private User user;
+	private UserInterface currentUser;
 
     @RequestMapping("/category/{id}")
     public String getCategoryInfo(Model model, @PathVariable int id) {
@@ -32,7 +32,7 @@ public class CategoryController {
             return "unknown";
         }
         model.addAttribute("category", category);
-	    model.addAttribute("user", user.getName());
+	    model.addAttribute("user", currentUser.getName());
         return "category";
     }
 
